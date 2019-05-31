@@ -12,7 +12,6 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script>
 			function deposer() {
-				var documents = [];
 				document.getElementById("deposer").style.display = "block";
 				document.getElementById("suivre").style.display = "none";
 				document.getElementById("suivre1").style.display = "none";

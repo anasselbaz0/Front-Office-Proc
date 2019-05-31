@@ -7,6 +7,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import java.util.ArrayList;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 public class DAODemande {
 
@@ -31,6 +32,7 @@ public class DAODemande {
 		doc.append("documents", doc1);
 		doc.append("jeton", jeton);
 		doc.append("isAccepted", false);
+		doc.append("isArchived", false);
 		collection.insertOne(doc);
 		return true;
 	}
@@ -40,7 +42,7 @@ public class DAODemande {
 	}
 
 	public FindIterable<Document> getSomeByProc(String proc) {
-		return collection.find(new BasicDBObject("processus", proc));
+		return collection.find(new BasicDBObject("processusName", proc));
 	}
 	
 	public Document getDemande(String jeton) {
@@ -63,6 +65,22 @@ public class DAODemande {
 		for(int i=ordre+1; i<oldDocuments.size(); i++)
 			newDocuments.add((String) oldDocuments.get(i));
 		return deposer((String)values.get(1), (String)values.get(2), newDocuments, jeton);
+	}
+
+	public boolean accepter(String jeton) {
+		Bson filter = new Document("jeton", jeton);
+		Bson newValue = new Document("isAccepted", true);
+		Bson updateOperationDocument = new Document("$set", newValue);
+		collection.updateOne(filter, updateOperationDocument);
+		return true;
+	}
+
+	public boolean archiver(String jeton) {
+		Bson filter = new Document("jeton", jeton);
+		Bson newValue = new Document("isArchived", true);
+		Bson updateOperationDocument = new Document("$set", newValue);
+		collection.updateOne(filter, updateOperationDocument);
+		return true;
 	}
 
 }

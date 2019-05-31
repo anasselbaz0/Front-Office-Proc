@@ -18,11 +18,11 @@
 					<table>
 						<tr>
 							<td class="lab">Username : </td>
-							<td><input name="username" type="text" style="padding: 5px"></td>
+							<td><input class="in" name="username" type="text" style="padding: 5px"></td>
 						</tr>
 						<tr>
 							<td class="lab">Password : </td>
-							<td><input name="password" type="password" style="padding: 5px"></td>
+							<td><input class="in" name="password" type="password" style="padding: 5px"></td>
 						</tr>
 					</table>
 					<input class='btn' name='submit_employe' type='submit' value='Login'>
@@ -34,7 +34,11 @@
 					<table>
 						<tr>
 							<td class="lab">CIN : </td>
-							<td><input name="cin" type="text" style="padding: 5px"></td>
+							<td><input class="in" name="cin" type="text" style="padding: 5px"></td>
+						</tr>
+						<tr>
+							<td class="lab"> </td>
+							<td></td>
 						</tr>
 					</table>
 					<input class='btn' name='submit_citoyen' type='submit' value='Login'>

@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import metier.ManagerDemande;
 
@@ -22,23 +21,22 @@ public class DeposerDemande extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
 		if(request.getParameter("submit_deposer") != null) {
 			int nbrDocuments = Integer.parseInt(request.getParameter("nbrDocuments"));
 			request.setAttribute("nbrDoc", nbrDocuments);
 			request.getRequestDispatcher("/citoyen/deposerDemande.jsp").forward(request, response);
 		}
 		if(request.getParameter("submit_deposer_finale") != null) {
+			String cin = (String)request.getSession().getAttribute("cin");
 			int nbrDocuments = Integer.parseInt(request.getParameter("nbrDocuments"));
 			ArrayList<String> documents = new ArrayList<>();
 			for(int i=1; i<=nbrDocuments; i++) {
 				documents.add(request.getParameter("document"+String.valueOf(i)));
 			}
 			String processus = request.getParameter("processus");
-			String cin = (String) session .getAttribute("cin");
 			String jeton = generateJeton(cin, processus);
-			if(managerDemande.deposer((String)request.getSession().getAttribute("cin"), processus, documents, jeton)) {
-				session.setAttribute("jeton", jeton);
+			request.getSession().setAttribute("jeton", jeton);
+			if(managerDemande.deposer(cin, processus, documents, jeton)) {
 				request.getRequestDispatcher("/citoyen/citoyenSuccess.jsp").forward(request, response);
 			} else
 				request.getRequestDispatcher("/citoyen/citoyenFail.jsp").forward(request, response);
@@ -68,6 +66,8 @@ public class DeposerDemande extends HttpServlet {
 		    }
 		    return pass;
 	}
+	
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
 

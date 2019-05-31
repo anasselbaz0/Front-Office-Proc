@@ -9,11 +9,11 @@ body {
 	margin: 20px auto;
 	background-color:  	#f2f2f2;
 	width: 90%;
-	border-left: 7px #ff006c solid;
+	border-left: 10px #ff006c solid;
 }
 
 input, select {
-	width: 80%;
+	
 	border-radius: 20px;
 	padding: 10px;
 	background-color:  	#fff;
@@ -56,15 +56,17 @@ table {
 .btn {
 	background: #b72b8f;
 	color: white;
-	padding: 10px;
+	padding: 10px 30px;
 	border-radius: 20px;
 	border:none;
 	margin: 10px;
 }
-
+.in {
+	width: 200px;
+}
 .tab td {
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
+  border-left: 1px dotted #777;
+  border-bottom: 1px dotted #777;
   border-collapse: collapse;
   padding: 0 10px;
 }
@@ -72,7 +74,7 @@ table {
 .btn1 {
 	background: #0088e8;
 	color: white;
-	padding: 10px;
+	padding: 10px 30px;
 	border-radius: 20px;
 	border:none;
 	margin: 2px;
