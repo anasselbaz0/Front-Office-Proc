@@ -82,7 +82,7 @@
 						<% 
 						for(Document doc: listDemandes) { 
 							ArrayList<Object> demande = new ArrayList<>(doc.values());
-							if((boolean) demande.get(5) == false) { 
+							if((boolean) demande.get(6) == false) { 
 						%>
 								<tr>
 									<td><%= demande.get(1) %></td>
@@ -126,7 +126,7 @@
 					<tbody>
 						<% for(Document doc: listDemandes) { 
 							ArrayList<Object> demande = new ArrayList<>(doc.values());
-							if((boolean)demande.get(5)==true && (boolean)demande.get(6)==false) { 
+							if((boolean)demande.get(6)==true && (boolean)demande.get(7)==false) { 
 						%>
 							<tr>
 								<td><%= demande.get(1) %></td>
@@ -140,7 +140,7 @@
 									</ul>
 								</td>
 								<td><%= demande.get(4) %></td>
-								<td>état !</td>
+								<td><%= demande.get(5) %></td>
 								<td>
 									<form action="chef">
 										<input type="hidden" name="jeton" value="<%= demande.get(4) %>">
@@ -169,7 +169,7 @@
 					<tbody>
 						<% for(Document doc: listDemandes) { 
 							ArrayList<Object> demande = new ArrayList<>(doc.values());
-							if((boolean) demande.get(6) == true) { 
+							if((boolean) demande.get(7) == true) { 
 						%>
 							<tr>
 								<td><%= demande.get(1) %></td>

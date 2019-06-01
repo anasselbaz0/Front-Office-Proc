@@ -43,7 +43,11 @@ public class Login extends HttpServlet {
 				session.setAttribute("username", username);
 				session.setAttribute("password", password);
 				switch(emp.getRole()) {
-					case "EMPLOYE": {
+					case "NORMALE": {
+						int numeroEtape = me.getNumeroEtape(me.getIdFromUsername(username));
+						String nomProc = me.getProcFromIdEmpNormale(me.getIdFromUsername(username));
+						session.setAttribute("numeroEtape", numeroEtape);
+						session.setAttribute("nomProc", nomProc);
 						request.getRequestDispatcher("/employe").forward(request, response);
 						break;
 					}

@@ -121,7 +121,7 @@
 								</ul>
 							</td>
 							<td><%= vals.get(4) %></td>
-							<td><%= vals.get(5) %></td>
+							<td><%= vals.get(6) %></td>
 						</tr>
 					<% } %>
 					</tbody>

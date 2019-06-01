@@ -11,8 +11,8 @@
 			<h1>Login</h1>
 		</header>
 
-		<div style="margin: 5%">
-			<div class="zone" style="width:45%; float: left; height: 300px">
+		<div style="padding: 10px; border-bottom: 10px solid #61BAAD; border-right: 10px solid #61BAAD; width: 60%; margin: auto;border-left: 10px solid #61BAAD;">
+			<div class="zone" style="width:90%;">
 				<h2>Employé / Chef de division</h2>
 				<form action="login" method="get">
 					<table>
@@ -28,17 +28,13 @@
 					<input class='btn' name='submit_employe' type='submit' value='Login'>
 				</form>
 			</div>
-			<div class="zone" style="width:45%; float: right; height: 300px">
+			<div class="zone" style="width:90%;">
 				<h2>Citoyen</h2>
 				<form action="login" method="get">
 					<table>
 						<tr>
 							<td class="lab">CIN : </td>
 							<td><input class="in" name="cin" type="text" style="padding: 5px"></td>
-						</tr>
-						<tr>
-							<td class="lab"> </td>
-							<td></td>
 						</tr>
 					</table>
 					<input class='btn' name='submit_citoyen' type='submit' value='Login'>

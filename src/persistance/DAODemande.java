@@ -31,6 +31,7 @@ public class DAODemande {
 		}
 		doc.append("documents", doc1);
 		doc.append("jeton", jeton);
+		doc.append("etat", 1);
 		doc.append("isAccepted", false);
 		doc.append("isArchived", false);
 		collection.insertOne(doc);
@@ -78,6 +79,17 @@ public class DAODemande {
 	public boolean archiver(String jeton) {
 		Bson filter = new Document("jeton", jeton);
 		Bson newValue = new Document("isArchived", true);
+		Bson updateOperationDocument = new Document("$set", newValue);
+		collection.updateOne(filter, updateOperationDocument);
+		return true;
+	}
+
+	public boolean traiter(String jeton) {
+		Document doc = getDemande(jeton);
+		ArrayList<Object> vals = new ArrayList<>(doc.values());
+		int etat = (int) vals.get(5);
+		Bson filter = new Document("jeton", jeton);
+		Bson newValue = new Document("etat", etat+1);
 		Bson updateOperationDocument = new Document("$set", newValue);
 		collection.updateOne(filter, updateOperationDocument);
 		return true;

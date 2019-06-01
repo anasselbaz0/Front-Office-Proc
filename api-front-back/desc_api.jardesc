@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/Anass/Desktop/jars/api-front-back.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/api-front-back/desc_api.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="true" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="false" exportJavaFiles="true" exportOutputFolder="true">
+        <javaElement handleIdentifier="=api-front-back/src&lt;api_front_back.persistance"/>
+        <javaElement handleIdentifier="=api-front-back/src&lt;api_front_back.metier"/>
+        <file path="/api-front-back/.project"/>
+        <file path="/api-front-back/.classpath"/>
+    </selectedElements>
+</jardesc>

@@ -50,6 +50,7 @@
 			<div class="zone">
 				<h1>Opération échouée :/</h1>
 			</div>
+		</div>
 	</body>
 	
 	

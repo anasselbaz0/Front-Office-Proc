@@ -51,48 +51,7 @@
 				<h1>Employé</h1>
 			</header>
 			<div class="zone">
-				<h3>Demandes non traitées :</h3>
-				<table class="tab">
-					<thead>
-						<tr>
-							<th>CIN</th>
-							<th>Documents</th>
-							<th>Jeton</th>
-							<th>Traiter</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% 
-						for(Document doc: listDemandes) { 
-							ArrayList<Object> demande = new ArrayList<>(doc.values());
-							if( ((String)demande.get(2)).equals(proc) && (int)demande.get(5)==numerpEtape) { 
-						%>
-								<tr>
-									<td><%= demande.get(1) %></td>
-									<td>
-										<ul>
-										<% 
-										Document documents = (Document) demande.get(3);
-										for(int j=0; j<documents.size(); j++) { %>
-											<li><%= documents.getString("document"+String.valueOf(j+1)) %></li>
-										<% } %>
-										</ul>
-									</td>
-									<td><%= demande.get(4) %></td>
-									<td>
-										<form action="employe">
-											<input type="hidden" name="jeton" value="<%= demande.get(4) %>">
-											<input type="hidden" name="action" value="traiter">
-											<input type="submit" name="accept" class="btn1" value="Traiter">
-										</form>
-									</td>
-								</tr>
-						<%
-							}
-						}
-						%>
-					</tbody>
-				</table>
+				<h1>Opération échouée :/</h1>
 			</div>
 		</div>
 	</body>
