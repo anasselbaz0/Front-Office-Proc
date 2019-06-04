@@ -9,13 +9,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Front Office</title>	
-		<link rel="stylesheet" type="text/css" href="style.css">
-	</head>
-	
-	<body>
-	
+
 	<%
 	ManagerEmploye me = new ManagerEmploye();
 	String username = (String) request.getSession().getAttribute("username");
@@ -25,6 +19,14 @@
 	ManagerDemande md = new ManagerDemande();
 	FindIterable<Document> listDemandes = md.getSomeByProc(proc);
 	%>
+	
+	<head>
+		<title>Front Office | Employé [ <%= proc %> - <%= numerpEtape %> ]</title>	
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	
+	<body>
+	
 	
 		<div class="sidebar">
 			<div class="side-zone">
@@ -48,7 +50,20 @@
 		
 		<div class="main">
 			<header>
-				<h1>Employé</h1>
+				<table>
+					<tr>
+						<td></td>
+						<td></td>
+						<td><h1>Employé</h1></td>
+						<td></td>
+						<td></td>
+						<td>
+							<form action="login">
+								<input name="logout" class="btn" type="submit" value="Logout" style="float:right"/>
+							</form>
+						</td>
+					</tr>
+				</table>
 			</header>
 			<div class="zone">
 				<h3>Demandes non traitées :</h3>
@@ -65,7 +80,7 @@
 						<% 
 						for(Document doc: listDemandes) { 
 							ArrayList<Object> demande = new ArrayList<>(doc.values());
-							if( ((String)demande.get(2)).equals(proc) && (int)demande.get(5)==numerpEtape) { 
+							if( ((String)demande.get(2)).equals(proc) && (int)demande.get(5)==numerpEtape && (boolean)demande.get(6)==true) { 
 						%>
 								<tr>
 									<td><%= demande.get(1) %></td>

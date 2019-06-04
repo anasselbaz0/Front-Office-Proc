@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Front Office</title>	
+		<title>Front Office | Citoyen</title>	
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script>
 			function deposer() {
@@ -48,9 +48,21 @@
 		<div class="main">
 		
 			<header>
-				<h1>Citoyen</h1>
+				<table>
+					<tr>
+						<td></td>
+						<td></td>
+						<td><h1>Citoyen</h1></td>
+						<td></td>
+						<td></td>
+						<td>
+							<form action="login">
+								<input name="logout" class="btn" type="submit" value="Logout" style="float:right"/>
+							</form>
+						</td>
+					</tr>
+				</table>
 			</header>
-			
 			<div class="zone" id="deposer" style="display: block">
 				<h3>Déposer une demande :</h3>
 				<form action="deposerdemande">
@@ -58,7 +70,7 @@
 						<tr>
 							<td>Choisir un processus :</td>
 							<td>
-								<select name="processus">
+								<select class="in" name="processus">
 									<% 
 									ManagerProcessus mp = new ManagerProcessus();
 									ArrayList<Processus> list = mp.getAll();
@@ -73,7 +85,7 @@
 						</tr>
 						<tr>
 							<td>Nombre de documents :</td>
-							<td><input name="nbrDocuments" type="number"/></td>
+							<td><input class="in" name="nbrDocuments" type="number"/></td>
 						</tr>
 					</table>
 					<input class="btn" value="Deposer" name="submit_deposer" type="submit"/>

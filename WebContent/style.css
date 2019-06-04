@@ -14,7 +14,8 @@ body {
 
 input, select {
 	
-	border-radius: 20px;
+	border-radius: 5px;
+	border:0.5px solid #aaa;
 	padding: 10px;
 	background-color:  	#fff;
 }
@@ -57,9 +58,9 @@ table {
 	background: #b72b8f;
 	color: white;
 	padding: 10px 30px;
-	border-radius: 20px;
+	border-radius: 5px;
 	border:none;
-	margin: 10px;
+	margin: 5px;
 }
 .in {
 	width: 200px;
@@ -75,9 +76,9 @@ table {
 	background: #0088e8;
 	color: white;
 	padding: 10px 30px;
-	border-radius: 20px;
+	border-radius: 5px;
 	border:none;
-	margin: 2px;
+	margin: 5px;
 }
 .btn-danger {
 	background: #ff1300;

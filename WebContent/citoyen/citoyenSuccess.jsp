@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Front Office</title>
+		<title>Front Office | Citoyen</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
@@ -19,14 +19,26 @@
 				</table>
 			</div>
 			
-			<button class="btn" onclick="deposer()">Déposer un demande</button>
-			<button class="btn" onclick="suivre()">suivre mes demandes</button>
+			<a href="/Front/citoyen"><button class="btn">Back</button></a>
 			
 		</div>
 		
 		<div class="main">
 			<header>
-				<h1>Citoyen</h1>
+				<table>
+					<tr>
+						<td></td>
+						<td></td>
+						<td><h1>Citoyen</h1></td>
+						<td></td>
+						<td></td>
+						<td>
+							<form action="login">
+								<input name="logout" class="btn" type="submit" value="Logout" style="float:right"/>
+							</form>
+						</td>
+					</tr>
+				</table>
 			</header>
 			
 			<div class="zone">

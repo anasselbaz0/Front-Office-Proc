@@ -29,14 +29,14 @@ public class ChefDeDivision extends HttpServlet {
 				switch(request.getParameter("action")) {
 					case "accepter": {
 						if(dao.accepter(jeton))
-							request.getRequestDispatcher("/chef").forward(request, response);
+							request.getRequestDispatcher("/chef/chefDeDivision.jsp").forward(request, response);
 						else
 							request.getRequestDispatcher("/chef/chefFail.jsp").forward(request, response);
 						break;
 					}
 					case "archiver": {
 						if(dao.archiver(jeton))
-							request.getRequestDispatcher("/chef").forward(request, response);
+							request.getRequestDispatcher("/chef/chefDeDivision.jsp").forward(request, response);
 						else
 							request.getRequestDispatcher("/chef/chefFail.jsp").forward(request, response);
 						break;

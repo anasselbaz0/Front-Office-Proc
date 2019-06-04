@@ -29,7 +29,7 @@ public class Employe extends HttpServlet {
 				switch(request.getParameter("action")) {
 					case "traiter": {
 						if(dao.traiter(jeton))
-							request.getRequestDispatcher("/employe").forward(request, response);
+							request.getRequestDispatcher("/employe/employe.jsp").forward(request, response);
 						else
 							request.getRequestDispatcher("/chef/employeFail.jsp").forward(request, response);
 						break;

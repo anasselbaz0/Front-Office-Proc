@@ -6,11 +6,23 @@
 <%@page import="java.util.*"%>
 <%@page import="com.mongodb.client.FindIterable"%>
 <%@page import="com.mongodb.client.MongoCursor"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Front Office</title>	
+	<%
+	int nbrEtapes = (int) session.getAttribute("nbrEtapes");
+	ManagerEmploye me = new ManagerEmploye();
+	String username = (String) session.getAttribute("username");
+	String proc = me.getProcFromIdEmp(me.getEmploye(username).getId());
+	
+	ManagerDemande md = new ManagerDemande();
+	FindIterable<Document> listDemandes = md.getSomeByProc(proc);
+	%>
+	
+		<title>Front | Chef de division | <%= proc %></title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script>
 			function nouvelles() {
@@ -33,14 +45,7 @@
 	
 	<body>
 	
-	<%
-	ManagerEmploye me = new ManagerEmploye();
-	String username = (String) request.getSession().getAttribute("username");
-	String proc = me.getProcFromIdEmp(me.getEmploye(username).getId());
 	
-	ManagerDemande md = new ManagerDemande();
-	FindIterable<Document> listDemandes = md.getSomeByProc(proc);
-	%>
 	
 		<div class="sidebar">
 			<div class="side-zone">
@@ -65,7 +70,20 @@
 		
 		<div class="main">
 			<header>
-				<h1>Chef de division</h1>
+				<table>
+					<tr>
+						<td></td>
+						<td></td>
+						<td><h1>Chef de division</h1></td>
+						<td></td>
+						<td></td>
+						<td>
+							<form action="login">
+								<input name="logout" class="btn" type="submit" value="Logout" style="float:right"/>
+							</form>
+						</td>
+					</tr>
+				</table>
 			</header>
 			<div class="zone" id="nouvelles" style="display: block">
 				<h3>Nouvelles demandes :</h3>
@@ -140,7 +158,13 @@
 									</ul>
 								</td>
 								<td><%= demande.get(4) %></td>
-								<td><%= demande.get(5) %></td>
+								<td>
+									<% if ( (int)demande.get(5) > nbrEtapes ) { %>
+										Terminé
+									<%  } else { %>
+										<%= demande.get(5) %>
+									<% } %>
+								</td>
 								<td>
 									<form action="chef">
 										<input type="hidden" name="jeton" value="<%= demande.get(4) %>">

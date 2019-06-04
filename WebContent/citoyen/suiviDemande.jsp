@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Front Office</title>	
+		<title>Front Office | Citoyen</title>	
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,600,700' rel='stylesheet' type='text/css'>
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -26,14 +26,27 @@
 					</tr>
 				</table>
 			</div>
-			<a href="/FrontEnd/citoyen"><button class="btn">Back</button></a>
+			<a href="/Front/citoyen"><button class="btn">Back</button></a>
 		</div>
 		
 		
 		<div class="main">
 		
 			<header>
-				<h1>Citoyen</h1>
+				<table>
+					<tr>
+						<td></td>
+						<td></td>
+						<td><h1>Citoyen</h1></td>
+						<td></td>
+						<td></td>
+						<td>
+							<form action="login">
+								<input name="logout" class="btn" type="submit" value="Logout" style="float:right"/>
+							</form>
+						</td>
+					</tr>
+				</table>
 			</header>
 			
 			<div>
@@ -97,12 +110,12 @@
 								for(int i=0; i<v.size(); i++) { %>
 									<tr>
 										<td><%= v.get(i) %></td>
-										<td><a href="/FrontEnd/gererdocuments?ordre=<%= i %>&action=supprimer&jeton=<%= request.getParameter("jeton") %>"><button class="btn">Supprimer</button></a></td>
+										<td><a href="/Front/gererdocuments?ordre=<%= i %>&action=supprimer&jeton=<%= request.getParameter("jeton") %>"><button class="btn">Supprimer</button></a></td>
 									</tr>
 								<% } %>
 							</table>
 						</td>
-						<td><button class="btn-grn">Ajouter document</button></td>
+						<td><button class="btn1">Ajouter document</button></td>
 					</tr>
 				</table>
 			</div>

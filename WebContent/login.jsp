@@ -11,7 +11,7 @@
 			<h1>Login</h1>
 		</header>
 
-		<div style="padding: 10px; border-bottom: 10px solid #61BAAD; border-right: 10px solid #61BAAD; width: 60%; margin: auto;border-left: 10px solid #61BAAD;">
+		<div style="padding: 10px;">
 			<div class="zone" style="width:90%;">
 				<h2>Employé / Chef de division</h2>
 				<form action="login" method="get">

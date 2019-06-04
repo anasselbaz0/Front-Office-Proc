@@ -21,15 +21,17 @@ public class GererDocuments extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("ordre")!=null && request.getParameter("action")!=null) {
+		if(request.getParameter("ordre")!=null && request.getParameter("action")!=null && request.getParameter("jeton")!=null) {
 			int ordre = Integer.parseInt(request.getParameter("ordre"));
 			String action = request.getParameter("action");
 			String jeton = request.getParameter("jeton");
 			switch(action) {
 				case "supprimer": {
-					if(md.supprimerDocument(jeton, ordre))
-						request.getRequestDispatcher("/citoyen/citoyen.jsp").forward(request, response);
-					else
+					if(md.supprimerDocument(jeton, ordre)) {
+						request.setAttribute("jeton", jeton);
+						request.setAttribute("submit_recherche_jeton", "Rechercher");
+						request.getRequestDispatcher("/suividemande").forward(request, response);
+					} else
 						request.getRequestDispatcher("/citoyen/citoyenFail.jsp").forward(request, response);
 					break;
 				}

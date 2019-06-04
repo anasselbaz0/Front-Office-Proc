@@ -12,6 +12,7 @@ import api_front_back.metier.Employe;
 import api_front_back.metier.Citoyen;
 import api_front_back.metier.ManagerCitoyen;
 import api_front_back.metier.ManagerEmploye;
+import api_front_back.metier.ManagerProcessus;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
@@ -31,6 +32,11 @@ public class Login extends HttpServlet {
 		if (request.getParameter("submit_employe") == null && request.getParameter("submit_citoyen") == null) {
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
 		}
+		if (request.getParameter("logout") != null) {
+			session.invalidate();
+			request.logout();
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
+		}
 		if (request.getParameter("submit_employe") != null) {
 			username = request.getParameter("username");
 			password = request.getParameter("password");
@@ -44,14 +50,16 @@ public class Login extends HttpServlet {
 				session.setAttribute("password", password);
 				switch(emp.getRole()) {
 					case "NORMALE": {
-						int numeroEtape = me.getNumeroEtape(me.getIdFromUsername(username));
-						String nomProc = me.getProcFromIdEmpNormale(me.getIdFromUsername(username));
+						int numeroEtape = me.getNumeroEtape(me.getEmploye(username).getId());
+						String nomProc = me.getProcFromIdEmpNormale(me.getEmploye(username).getId());
 						session.setAttribute("numeroEtape", numeroEtape);
 						session.setAttribute("nomProc", nomProc);
 						request.getRequestDispatcher("/employe").forward(request, response);
 						break;
 					}
 					case "CHEF": {
+						ManagerProcessus mp = new ManagerProcessus();
+						session.setAttribute("nbrEtapes", mp.getNbrEtats(me.getProcFromIdEmp(emp.getId())));
 						request.getRequestDispatcher("/chef").forward(request, response);
 						break;
 					}

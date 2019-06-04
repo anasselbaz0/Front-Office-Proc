@@ -9,18 +9,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Front Office</title>	
-		<link rel="stylesheet" type="text/css" href="style.css">
-	</head>
-	
-	<body>
-	
+
 	<%
 	ManagerEmploye me = new ManagerEmploye();
 	String username = (String) request.getSession().getAttribute("username");
 	String proc = me.getProcFromIdEmp(me.getEmploye(username).getId());
 	%>
+	
+	<head>
+		<title>Front | Chef de division | <%= proc %></title>	
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	
+	<body>
 	
 		<div class="sidebar">
 			<div class="side-zone">
@@ -45,7 +46,20 @@
 		
 		<div class="main">
 			<header>
-				<h1>Chef de division</h1>
+				<table>
+					<tr>
+						<td></td>
+						<td></td>
+						<td><h1>Chef de division</h1></td>
+						<td></td>
+						<td></td>
+						<td>
+							<form action="login">
+								<input name="logout" class="btn" type="submit" value="Logout" style="float:right"/>
+							</form>
+						</td>
+					</tr>
+				</table>
 			</header>
 			<div class="zone">
 				<h1>Opération échouée :/</h1>
